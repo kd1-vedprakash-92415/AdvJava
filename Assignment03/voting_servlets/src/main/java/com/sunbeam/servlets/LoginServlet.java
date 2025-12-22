@@ -7,6 +7,7 @@ import com.sunbeam.daos.UserDao;
 import com.sunbeam.daos.UserDaoImpl;
 import com.sunbeam.pojos.User;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -47,7 +48,9 @@ public class LoginServlet extends HttpServlet {
 						resp.sendRedirect("candlist");
 					}
 					else if(dbUser.getRole().equals("admin")) {
-						resp.sendRedirect("result");
+//						resp.sendRedirect("result");
+						RequestDispatcher rd = req.getRequestDispatcher("result");
+						rd.forward(req, resp);
 					}
 				}
 				else 
